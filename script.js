@@ -1,106 +1,123 @@
-let string = "hello world!";
+const myObj = {
+  name: "John Doe",
+  age: 30,
+  coords: {
+    lat: 37.7749,
+    lng: -122.4194,
+  },
+  greet: function () {
+    console.log(`Hello, my name is ${this.name}!`);
+  },
+};
 
-//concatination joining two strings or arrays 
+const myObj2 = myObj;
 
-let string3 = string; 
+//by default objects mutable even when declared with const
 
-string3 = "Hello World 3"
+console.log(myObj === myObj2);
 
-console.log(string3);
+// function declaration
 
-const string2 = "hello world from other universe!";
-
-// template literal syntax --> es6
-console.log(string.concat(` ${string2}`));
-
-console.log(string)
-
-
-console.log(string.includes(`worlds`));
-
-// copy by value and copy by reference
-
- let array = [1, 2, 3];
-
- let array2 = array
-
-
-array2.pop();
-
-console.log(array);
-
-
-let myObj = {
-    name: "John",
-    age: 30
+function Cook(utensils, rawMaterial) {
+  console.log("I cook");
 }
 
-
-let myObj2 = myObj;
-
-
-myObj2.age = 31;
-
-
-console.log(myObj);
-
-console.log(string.indexOf("l"))
-
-console.log(string3.substring(0,5).repeat(4));
-
-
-// object methods
-
-let obj = {
-    name: "John",
-    age: 30,
-    greet: function(){
-        console.log(`Hello, my name is ${this.name}`);
-    }
+function Tutor() {
+  console.log("I deliver tutorials");
 }
 
-obj.age = 31; 
+const sum = Sum(1, 2);
 
-
-obj = {
-    name: "Jane",
-    age: 31
+function Sum(param1, param2) {
+  return param1 + param2;
 }
 
-console.log(obj);
+//convention = generally accepted norms
 
-console.log(new Object)
+console.log(sum);
 
+//anonymous function
 
-console.log(Object.keys(obj));
+const multiply = function (param1, param2) {
+  return param1 * param2;
+};
 
+console.log(multiply(3, 4));
 
- // es5 var declare variables  - hoisting redeclaration
+const myObj3 = {
+  speech: function (a) {
+    console.log(`I am speaking ${a} times`);
+  },
+  walk: function () {},
+};
 
- // string , array , object 
+console.log(myObj3.speech(3));
 
+//let  and const not hoisted
 
+// modern js
 
+//var caused too - many problemns - and hence recommended less
 
+// es6 - 2015
 
-const arrayMethods = {
+Name();
 
-    slice: function (a,b){
-        return a +b
-    },
-    map: function(){
-        return 4
-    }
+// arrow function
 
+function Name() {
+  console.log("Hello, my name is Name");
 }
 
+const multiplyArrow = (param1) => param1 * 2;
 
-let array1 = [1, 2, 3];
+console.log(multiplyArrow(3));
 
-let array3 = arrayMethods.slice();
+// IIFE - IMMEDIATELY INVOKED FUNCTION EXPRESSION
 
-console.log(arrayMethods.slice(0,3))
+(function (a, b, c) {
+  console.log("I am an IIFE" + " " + a + b + c);
+})(1, 2, 3);
+
+//scoping
+
+let globalVar = "I am global";
+
+function outerFunction() {
+  let outerVar = "I am outer";
+
+  return function innerFunction() {
+    let innerVar = "I am inner";
+
+    return outerVar; //I am outer
+  };
+}
+
+const store = outerFunction();
+
+console.log(store); //I am global
+
+function outerCounter() {
+  let count = 0;
+
+  return function innerCounter() {
+    count++;
+    return count;
+  };
+}
+
+const AnjanadrisCounter = outerCounter();
+
+const AbdulsCounter = outerCounter();
+
+console.log(AnjanadrisCounter()); // 1
+
+console.log(AnjanadrisCounter()); // 2
+
+console.log(AbdulsCounter()); // 1
+
+console.log(AnjanadrisCounter()); // 3
 
 
-
+// examples
 
