@@ -16,6 +16,8 @@
 
    scoping
 
+   lexical scope
+
    private variables
 
    closure - e.g counter function
